@@ -1,7 +1,6 @@
 <?php
 
 use dokuwiki\plugin\oauth\Adapter;
-use dokuwiki\plugin\oauthslack\DotAccess;
 use dokuwiki\plugin\oauthslack\Slack;
 
 /**
@@ -22,12 +21,12 @@ class action_plugin_oauthslack extends Adapter
         $oauth = $this->getOAuthService();
         $data = array();
 
-        $result = json_decode($oauth->request('https://slack.com/api/openid.connect.userInfo'), true);
+        $result = json_decode($oauth->request(Slack::USERINFO_URL), true);
         
-        $data['user'] = $result['name'];
-        $data['name'] = $result['given_name'];
-        $data['mail'] = $result['email'];
-        $data['grps'] = $result['naprofileme'];
+        $data['user'] = $result[Slack::USERINFO_JSON_USER];
+        $data['name'] = $result[Slack::USERINFO_JSON_NAME];
+        $data['mail'] = $result[Slack::USERINFO_JSON_MAIL];
+        $data['grps'] = $result[Slack::USERINFO_JSON_GRPS];
 
         return $data;
     }
@@ -42,14 +41,12 @@ class action_plugin_oauthslack extends Adapter
     /** @inheritDoc */
     public function getLabel()
     {
-        $label = 'Slack';
-        return $label;
+        return Slack::BUTTON_LABEL;
     }
 
     /** @inheritDoc */
     public function getColor()
     {
-        $color = '#4A154B';
-        return $color;    
+        return Slack::BUTTON_BACKGROUND_COLOR;
     }
 }
