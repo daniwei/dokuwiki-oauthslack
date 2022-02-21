@@ -11,6 +11,12 @@ use OAuth\Common\Http\Uri\Uri;
  */
 class Slack extends AbstractOAuth2Base
 {
+    /**
+     * Defined scopes
+     */
+    const SCOPE_OPENID = 'openid';
+    const SCOPE_EMAIL = 'email';
+    const SCOPE_PROFILE = 'profile';
 
     /** @inheritdoc */
     public function getAuthorizationEndpoint()
