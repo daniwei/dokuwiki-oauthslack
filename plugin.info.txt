@@ -1,0 +1,5 @@
+base   oauthslack
+author Daniel Weisshaar
+date   2022-02-21
+name   oauth Slack Service
+desc   Slack Service for use with the oAuth Plugin
