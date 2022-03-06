@@ -3,6 +3,12 @@
 use dokuwiki\plugin\oauth\Adapter;
 use dokuwiki\plugin\oauthslack\Slack;
 
+// Check if the oauth plugin is installed
+if(!plugin_load('helper', 'oauth')){
+    msg('The plugin oauthslack requires the oauth plugin. Please install it.', -1);
+    return;
+}
+
 /**
  * Service Implementation for oAuth Slack authentication
  */
