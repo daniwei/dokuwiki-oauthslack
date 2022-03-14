@@ -5,5 +5,5 @@
  * @author Daniel Weisshaar
  */
 
-$lang['key'] = 'Slack App ID';
+$lang['key'] = 'Slack App Client ID';
 $lang['secret'] = 'Slack App Client Secret';
